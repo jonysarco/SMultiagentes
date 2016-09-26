@@ -1,11 +1,12 @@
+package States;
 import jade.core.behaviours.Behaviour;
 
-public class FinalState extends Behaviour {
+public class Propose extends Behaviour {
 
 	@Override
 	public void action() {
 		// TODO Auto-generated method stub
-
+		System.out.println("Estoy proponiendo algo");
 	}
 
 	@Override

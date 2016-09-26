@@ -1,3 +1,5 @@
+package Agents;
+import States.InitiatorStateMachine;
 import jade.core.Agent;
 
 public class Initiator extends Agent{

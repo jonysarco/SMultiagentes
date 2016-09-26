@@ -1,3 +1,4 @@
+package States;
 import jade.core.behaviours.DataStore;
 import jade.core.behaviours.FSMBehaviour;
 import jade.proto.ProposeInitiator;
