@@ -1,7 +1,7 @@
-package States;
+package behaviors;
 import jade.core.behaviours.Behaviour;
 
-public class Wait extends Behaviour {
+public class BehaviourFinalStateInitiator extends Behaviour {
 
 	@Override
 	public void action() {
