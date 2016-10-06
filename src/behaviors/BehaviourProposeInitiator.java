@@ -21,9 +21,11 @@ public class BehaviourProposeInitiator extends Behaviour {
 	@Override
 	public void action() {
 		// TODO Auto-generated method stub
-		 System.out.println(myAgent.getLocalName() +": envio una propuesta al Responder");
-         AID id = new AID();
+		 System.out.println(myAgent.getLocalName() +": esta por enviar una propuesta al agente responder");
+         
+		 AID id = new AID();
          id.setLocalName("Responder");
+         
          if ( countMovies < movies.size() )	{  
 		     //Creo el mensaje 
         	 ACLMessage message = new ACLMessage(ACLMessage.PROPOSE);
@@ -37,10 +39,11 @@ public class BehaviourProposeInitiator extends Behaviour {
         	 //Envio el mensaje
         	 myAgent.send(message);
         	 state = 0;
-        	 System.out.println("Se envio una propuesta al emisor");
+        	 System.out.println("Se envio una propuesta al agente Responder");
          }
          else	{
         	 System.out.println("No hay peliculas para recomendar");
+        	 state = 1;
          }
 	}
 
@@ -50,4 +53,9 @@ public class BehaviourProposeInitiator extends Behaviour {
 		return true;
 	}
 
+	@Override
+	public int onEnd() {
+		// TODO Auto-generated method stub
+		return state;
+	}
 }
