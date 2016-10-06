@@ -15,21 +15,21 @@ public class BehaviourFinalStateInitiator extends Behaviour{
 
 	@Override
 	public void action() {
-		 ACLMessage respuesta=(ACLMessage) getDataStore().get(Key);
-		 if(respuesta.getPerformative()==ACLMessage.ACCEPT_PROPOSAL)
-			 System.out.println("La propuesta del agente: " + myAgent.getLocalName() + "fue aceptada");
+		 ACLMessage respuesta = (ACLMessage) getDataStore().get(Key);
+		 if (respuesta.getPerformative() == ACLMessage.ACCEPT_PROPOSAL )
+			 System.out.println("La propuesta del agente: " + myAgent.getLocalName() + " fue aceptada");
 		 else
-			 System.out.println("La propuesta del agente: " + myAgent.getLocalName() + "fue rechazada");
+			 System.out.println("La propuesta del agente: " + myAgent.getLocalName() + " fue rechazada");
 		 end = true;
 	}
 	
 	 protected void takeDown() {
-         System.out.println("Agente "+myAgent.getLocalName()+" termino de ejecutarse.");
+         System.out.println("Agente " + myAgent.getLocalName() + " termino de ejecutarse.");
      }
 
 	@Override
 	public boolean done() {
-		if(end == true)
+		if (end == true)
 			myAgent.doDelete();
 		return end;
 	}

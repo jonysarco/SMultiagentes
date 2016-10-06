@@ -37,7 +37,6 @@ public class BehaviourWaitResponder extends Behaviour {
          else
          {
         	 state = 1;
-             System.out.println(myAgent.getLocalName() +": esta esperando a recibir propuesta de pelicula...");
              block();                 
          }		
 	}

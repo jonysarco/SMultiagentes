@@ -11,12 +11,12 @@ public class BehaviourFinalResponder extends Behaviour {
 	@Override
 	public void action() {
 		ACLMessage answer = (ACLMessage) getDataStore().get(Key);
-		System.out.println("El agente "+ myAgent.getLocalName() +" acepto la película "+ answer.getContent());
+		System.out.println("El agente "+ myAgent.getLocalName() +" acepto la película: "+ answer.getContent());
 		end = true;
 	}
 	
 	protected void takeDown() {
-        System.out.println("Agente "+myAgent.getLocalName()+" termino de ejecutarse.");
+        System.out.println( "El agente "+myAgent.getLocalName()+" termino de ejecutarse.");
     }
 
 	@Override

@@ -18,7 +18,6 @@ public class BehaviourWaitInitiator extends Behaviour {
 		 ACLMessage mensaje = myAgent.receive();
          if ( mensaje!= null )
          {
-             System.out.println(myAgent.getLocalName() + ": recibió el mensaje : " + mensaje.toString());
              getDataStore().put(Key, mensaje); //Almaceno el mensaje que llego 
              if ( mensaje.getPerformative() == ACLMessage.ACCEPT_PROPOSAL )	{ 
             	 state=1;
@@ -30,7 +29,6 @@ public class BehaviourWaitInitiator extends Behaviour {
             end = true;
          }
          else	{
-             	System.out.println("El agente " +  myAgent.getLocalName() + " esta esperando la respuesta ");
              	block();
          }		
 	}

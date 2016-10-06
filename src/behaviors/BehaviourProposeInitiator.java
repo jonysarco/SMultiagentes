@@ -24,7 +24,6 @@ public class BehaviourProposeInitiator extends Behaviour {
 	@Override
 	public void action() {
 		// TODO Auto-generated method stub
-		 System.out.println(myAgent.getLocalName() +": esta por enviar una propuesta al agente responder");
 		 AID id = new AID();
          id.setLocalName("Responder");
          if ( countMovies < movies.size() )	{  
