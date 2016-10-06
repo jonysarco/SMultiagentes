@@ -17,30 +17,37 @@ public class BehaviourWaitResponder extends Behaviour {
 	public void action() {
 		
 		System.out.println("El agente " + myAgent.getName() + " esta esperando la propuesta de una pelicula");
-		
-				
-		 MessageTemplate filtroInform = MessageTemplate.MatchPerformative(ACLMessage.PROPOSE);  //filtro para que se reciban solo mensajes de asunto Propose
 		 
-		 ACLMessage message = myAgent.receive(filtroInform);
+		 MessageTemplate filtroAnd = null;
+				
+		 MessageTemplate filtroInformPropose = MessageTemplate.MatchPerformative(ACLMessage.PROPOSE);  //filtro para que se reciban solo mensajes de asunto Propose
+		 MessageTemplate filtroInformCancel = MessageTemplate.MatchPerformative(ACLMessage.CANCEL); //filtro para que se reciban solo mensajes de asunto Cancel 
+		 
+		 filtroAnd = MessageTemplate.and(filtroInformPropose, filtroInformCancel);
+		 
+		 ACLMessage message = myAgent.receive(filtroAnd);
 		
 		//Obtiene la primer pelicula de la cola de mensajes
-		 if(message != null){
-			 
-			 getDataStore().put(Key, message); //Almaceno el mensaje de entrada para que pueda manipularlo el siguiente estado 
-			 
-			 System.out.println("El agente " + myAgent.getName() + " recibió la siguiente película " + message.getContent());
-           	 state=0; //Paso al siguiente estado para analizar propuesta  
+		 if(message != null)
+		 {
+			 getDataStore().put(Key, message); //Almaceno el mensaje de entrada para que pueda manipularlo el siguiente estado
+			 if(message.getPerformative()==ACLMessage.PROPOSE){
+				 System.out.println("El agente " + myAgent.getName() + " recibió un mensaje Propose " );
+	           	 state=0; //Paso al siguiente estado para analizar propuesta
+			 }
+			 else{
+				 System.out.println("El agente " + myAgent.getName() + " recibió un mensaje Cancel " );
+				 state = 2; // Como llego un mensaje Cancel paso al estado final
+			 }   
          }
          else
          {
         	 state=1;
-             System.out.println(myAgent.getLocalName() +": Esperando a recibir propuesta de pelicula...");
-              block();                 
+             System.out.println(myAgent.getLocalName() +": esta esperando a recibir propuesta de pelicula...");
+             block();                 
          }		
 
 	}
-
-	
 
 	@Override
 	public boolean done() {
