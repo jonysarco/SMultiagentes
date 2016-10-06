@@ -10,12 +10,14 @@ public class BehaviourProposeInitiator extends Behaviour {
 
 	private int countMovies,state;
 	private Vector<String> movies;
-	
+	private boolean fin;
+	private static final Integer Key = 1;
 	public BehaviourProposeInitiator(Vector<String> mov) {
 		// TODO Auto-generated constructor stub
 		countMovies = 0;
 		this.movies = mov;
 		this.state = 0;
+		fin = false;
 	}
 	
 	@Override
@@ -43,14 +45,24 @@ public class BehaviourProposeInitiator extends Behaviour {
          }
          else	{
         	 System.out.println("No hay peliculas para recomendar");
+        	 System.out.println(myAgent.getLocalName() +": llego al maximo de propuestas enviadas ");
+        	 ACLMessage mensajeRechazo = new ACLMessage(ACLMessage.CANCEL);
+        	 mensajeRechazo.setSender(myAgent.getAID());
+        	 mensajeRechazo.setLanguage("Español");
+        	 mensajeRechazo.addReceiver(id);
+        	 mensajeRechazo.setContent("Fallo la conversacion"); 
+        	 getDataStore().put(Key, mensajeRechazo); //Almaceno el mensaje que llego 
+        	 
         	 state = 1;
          }
+         
+         fin = true;
 	}
 
 	@Override
 	public boolean done() {
 		// TODO Auto-generated method stub
-		return true;
+		return fin;
 	}
 
 	@Override

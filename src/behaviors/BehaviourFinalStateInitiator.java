@@ -10,7 +10,8 @@ public class BehaviourFinalStateInitiator extends Behaviour{
 	
 	
 	public BehaviourFinalStateInitiator() {
-		
+		super();
+		this.fin = false;
 	}
 
 	@Override

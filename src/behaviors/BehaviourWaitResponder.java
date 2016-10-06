@@ -7,10 +7,11 @@ import jade.lang.acl.MessageTemplate;
 public class BehaviourWaitResponder extends Behaviour {
 
 	private boolean fin = false;
-	private int state = 0;
+	private int state;
 	private static final Integer Key = 1;
 	public BehaviourWaitResponder(){
-		
+		fin = false;
+		state=1;
 	}
 	
 	@Override
@@ -18,18 +19,22 @@ public class BehaviourWaitResponder extends Behaviour {
 		
 		System.out.println("El agente " + myAgent.getName() + " esta esperando la propuesta de una pelicula");
 		 
-		 MessageTemplate filtroAnd = null;
+		 /*MessageTemplate filtroOr = null;
 				
 		 MessageTemplate filtroInformPropose = MessageTemplate.MatchPerformative(ACLMessage.PROPOSE);  //filtro para que se reciban solo mensajes de asunto Propose
 		 MessageTemplate filtroInformCancel = MessageTemplate.MatchPerformative(ACLMessage.CANCEL); //filtro para que se reciban solo mensajes de asunto Cancel 
 		 
-		 filtroAnd = MessageTemplate.and(filtroInformPropose, filtroInformCancel);
-		 
-		 ACLMessage message = myAgent.receive(filtroAnd);
+		 filtroOr = MessageTemplate.or(filtroInformPropose, filtroInformCancel);
+		 */
+		 ACLMessage message = myAgent.receive();
 		
+		 
+		 
+		 
 		//Obtiene la primer pelicula de la cola de mensajes
 		 if(message != null)
 		 {
+			 fin = true;
 			 getDataStore().put(Key, message); //Almaceno el mensaje de entrada para que pueda manipularlo el siguiente estado
 			 if(message.getPerformative()==ACLMessage.PROPOSE){
 				 System.out.println("El agente " + myAgent.getName() + " recibió un mensaje Propose " );

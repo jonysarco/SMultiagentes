@@ -14,6 +14,8 @@ public class InitiatorStateMachine extends FSMBehaviour{
 	public InitiatorStateMachine(Vector<String> mov)	{
 		super();
 		
+		System.out.println("El tamaño del vector es: " + mov.size());
+		
 		DataStore dataStore = new DataStore();
 		
 		//Definicion de estados
