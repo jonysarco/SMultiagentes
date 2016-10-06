@@ -32,6 +32,7 @@ public class ResponderStateMachine extends FSMBehaviour {
 		
 		this.registerTransition("waitResp", "confirmResp",0 ); // voy al estado siguiente para analizar la pelicula  
 		this.registerTransition("waitResp", "waitResp",1 ); // me quedo esperando que llegue un mensaje
+		this.registerTransition("waitResp", "finalResp", 2); //cuando me llega un mensaje de cancel, paso al estado final
 		
 		this.registerTransition("confirmResp", "finalResp",1); // voy a estado final
 		this.registerTransition("confirmResp", "waitResp",0 ); //vuelvo a esperar otra propuesta

@@ -39,7 +39,7 @@ public class BehaviourProposeInitiator extends Behaviour {
         	 //Envio el mensaje
         	 myAgent.send(message);
         	 state = 0;
-        	 System.out.println("Se envio una propuesta al agente Responder");
+        	 System.out.println("Se envia una propuesta al agente Responder");
          }
          else	{
         	 System.out.println("No hay peliculas para recomendar");
