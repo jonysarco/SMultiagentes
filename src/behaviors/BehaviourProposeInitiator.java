@@ -43,6 +43,7 @@ public class BehaviourProposeInitiator extends Behaviour {
          }
          else	{
         	 System.out.println("No hay peliculas para recomendar");
+        	 state = 1;
          }
 	}
 
@@ -52,4 +53,9 @@ public class BehaviourProposeInitiator extends Behaviour {
 		return true;
 	}
 
+	@Override
+	public int onEnd() {
+		// TODO Auto-generated method stub
+		return state;
+	}
 }
