@@ -5,13 +5,12 @@ import jade.lang.acl.ACLMessage;
 public class BehaviourFinalStateInitiator extends Behaviour{
 
 	
-	private static final Integer Key=1;
-	private boolean fin ;
-	
+	private static final Integer Key = 1;
+	private boolean end;
 	
 	public BehaviourFinalStateInitiator() {
 		super();
-		this.fin = false;
+		this.end = false;
 	}
 
 	@Override
@@ -21,7 +20,7 @@ public class BehaviourFinalStateInitiator extends Behaviour{
 			 System.out.println("La propuesta del agente: " + myAgent.getLocalName() + "fue aceptada");
 		 else
 			 System.out.println("La propuesta del agente: " + myAgent.getLocalName() + "fue rechazada");
-		 fin=true;
+		 end = true;
 	}
 	
 	 protected void takeDown() {
@@ -30,9 +29,9 @@ public class BehaviourFinalStateInitiator extends Behaviour{
 
 	@Override
 	public boolean done() {
-		if(fin==true)
+		if(end == true)
 			myAgent.doDelete();
-		return fin;
+		return end;
 	}
 
 }

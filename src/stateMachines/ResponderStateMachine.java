@@ -20,10 +20,8 @@ public class ResponderStateMachine extends FSMBehaviour {
 		BehaviourConfirmResponder confirmResponder = new BehaviourConfirmResponder();
 		confirmResponder.setDataStore(dataStateResponder);
 		
-		
 		BehaviourFinalResponder finalResponder = new BehaviourFinalResponder();
 		finalResponder.setDataStore(dataStateResponder);
-		
 		
 		//Registrar Estados
 		this.registerFirstState(waitResponder,"waitResp");
@@ -38,9 +36,6 @@ public class ResponderStateMachine extends FSMBehaviour {
 		this.registerTransition("confirmResp", "waitResp",0 ); 	//Vuelvo a esperar otra propuesta
 		
 		this.registerDefaultTransition("waitResp", "confirmResp");
-		
 	}
-	
-	
 }
 

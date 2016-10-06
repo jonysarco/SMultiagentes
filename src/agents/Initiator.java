@@ -10,7 +10,6 @@ public class Initiator extends Agent{
 	private Vector<String> movies;
 	
 	protected void setup()	{
-		
 		movies = new Vector<>();
 		movies.add("Rambo 1");
 		movies.add("Rambo 2");
@@ -21,7 +20,6 @@ public class Initiator extends Agent{
 		
 		//Agrego comportamiento al agente
 		addBehaviour(new InitiatorStateMachine(this.movies));
-		
 		System.out.println("El agente"+this.getAID().getName()+" se encuentra activo");
 	}
 }

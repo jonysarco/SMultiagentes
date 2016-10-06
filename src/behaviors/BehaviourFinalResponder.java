@@ -5,19 +5,15 @@ import jade.lang.acl.ACLMessage;
 
 public class BehaviourFinalResponder extends Behaviour {
 
-  private boolean fin ;
-  private static final Integer Key = 1;
-	 public BehaviourFinalResponder() {
-			
-		}
+	private boolean end;
+	private static final Integer Key = 1;
 	 
 	@Override
 	public void action() {
-		ACLMessage respuesta=(ACLMessage) getDataStore().get(Key);
-		System.out.println("El agente "+ myAgent.getLocalName() +" acepto la película "+ respuesta.getContent());
-		fin=true;
+		ACLMessage answer = (ACLMessage) getDataStore().get(Key);
+		System.out.println("El agente "+ myAgent.getLocalName() +" acepto la película "+ answer.getContent());
+		end = true;
 	}
-
 	
 	protected void takeDown() {
         System.out.println("Agente "+myAgent.getLocalName()+" termino de ejecutarse.");
@@ -25,9 +21,9 @@ public class BehaviourFinalResponder extends Behaviour {
 
 	@Override
 	public boolean done() {
-		if(fin==true)
+		if(end == true)
 			myAgent.doDelete();
-		return fin;
+		return end;
 	}
 
 

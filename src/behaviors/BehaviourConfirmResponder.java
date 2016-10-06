@@ -29,24 +29,17 @@ public class BehaviourConfirmResponder extends Behaviour {
 	public void action() {
 		// TODO Auto-generated method stub
 		//Obtengo el mensaje de propuesta
-		
-		System.out.println("Entraaaaaaaaaaaaaaaaaaaaaaaasssssssss");
-		
 		ACLMessage answer = (ACLMessage) getDataStore().get(Key);
-		if ( Math.random() > 2 )	{
-			fin = true;
-			System.out.println("Entro el Randommmmmm");
-			
-			
+		if ( Math.random() > accept )	{
 			//Acepta la propuesta
 			ACLMessage acceptMessage = new ACLMessage(ACLMessage.ACCEPT_PROPOSAL);
 			setMessage(acceptMessage, answer);
 			state = 1;
+			fin = true;
 		}
 		else	
 		{
-			System.out.println("NO Entro el Randommmmmm");
-			
+			//Rechazo el mensaje
 			ACLMessage rejectMessage = new ACLMessage(ACLMessage.REJECT_PROPOSAL);
 			setMessage(rejectMessage, answer);
 			state = 0;

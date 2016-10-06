@@ -6,16 +6,10 @@ import behaviors.BehaviourProposeInitiator;
 import behaviors.BehaviourWaitInitiator;
 import jade.core.behaviours.DataStore;
 import jade.core.behaviours.FSMBehaviour;
-import jade.proto.ProposeInitiator;
-import jade.util.leap.ArrayList;
 
 public class InitiatorStateMachine extends FSMBehaviour{
 	
 	public InitiatorStateMachine(Vector<String> mov)	{
-		super();
-		
-		System.out.println("El tamaño del vector es: " + mov.size());
-		
 		DataStore dataStore = new DataStore();
 		
 		//Definicion de estados
@@ -39,8 +33,6 @@ public class InitiatorStateMachine extends FSMBehaviour{
 		
 		this.registerTransition("Waiting", "Propose", 0);
 		this.registerTransition("Waiting", "Final", 1);
-		
-		
 	}
 	
 }
