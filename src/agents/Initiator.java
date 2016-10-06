@@ -16,6 +16,7 @@ public class Initiator extends Agent{
 	protected void setup()	{
 		//Agrego comportamiento al agente
 		addBehaviour(new InitiatorStateMachine(this.movies));
+		
 		System.out.println("El agente"+this.getAID().getName()+" se encuentra activo");
 	}
 }

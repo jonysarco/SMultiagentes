@@ -12,6 +12,8 @@ import jade.util.leap.ArrayList;
 public class InitiatorStateMachine extends FSMBehaviour{
 	
 	public InitiatorStateMachine(Vector<String> mov)	{
+		super();
+		
 		DataStore dataStore = new DataStore();
 		
 		//Definicion de estados
@@ -32,6 +34,7 @@ public class InitiatorStateMachine extends FSMBehaviour{
 		//Definir transiciones
 		this.registerTransition("Propose", "Waiting", 0);
 		this.registerTransition("Propose", "Final", 1);
+		
 		this.registerTransition("Waiting", "Propose", 0);
 		this.registerTransition("Waiting", "Final", 1);
 		
