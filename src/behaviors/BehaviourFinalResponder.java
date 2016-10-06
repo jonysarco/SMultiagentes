@@ -1,19 +1,34 @@
 package behaviors;
 
 import jade.core.behaviours.Behaviour;
+import jade.lang.acl.ACLMessage;
 
 public class BehaviourFinalResponder extends Behaviour {
 
+  private boolean fin ;
+  private static final Integer Key = 1;
+	 public BehaviourFinalResponder() {
+			
+		}
+	 
 	@Override
 	public void action() {
-		// TODO Auto-generated method stub
-
+		ACLMessage respuesta=(ACLMessage) getDataStore().get(Key);
+		System.out.println("El agente "+ myAgent.getLocalName() +" acepto la película "+ respuesta.getContent());
+		fin=true;
 	}
+
+	
+	protected void takeDown() {
+        System.out.println("Agente "+myAgent.getLocalName()+" termino de ejecutarse.");
+    }
 
 	@Override
 	public boolean done() {
-		// TODO Auto-generated method stub
-		return false;
+		if(fin==true)
+			myAgent.doDelete();
+		return fin;
 	}
+
 
 }

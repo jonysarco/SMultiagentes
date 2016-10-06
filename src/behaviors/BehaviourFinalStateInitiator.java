@@ -1,18 +1,38 @@
 package behaviors;
 import jade.core.behaviours.Behaviour;
+import jade.lang.acl.ACLMessage;
 
-public class BehaviourFinalStateInitiator extends Behaviour {
+public class BehaviourFinalStateInitiator extends Behaviour{
+
+	
+	private static final Integer Key=1;
+	private boolean fin ;
+	
+	
+	public BehaviourFinalStateInitiator() {
+		
+	}
 
 	@Override
 	public void action() {
-		// TODO Auto-generated method stub
-
+		 ACLMessage respuesta=(ACLMessage) getDataStore().get(Key);
+		 if(respuesta.getPerformative()==ACLMessage.ACCEPT_PROPOSAL)
+			 System.out.println("La propuesta del agente: " + myAgent.getLocalName() + "fue aceptada");
+		 else
+			 System.out.println("La propuesta del agente: " + myAgent.getLocalName() + "fue rechazada");
+		 fin=true;
 	}
+	
+	 protected void takeDown() {
+         System.out.println("Agente "+myAgent.getLocalName()+" termino de ejecutarse.");
+     }
 
 	@Override
 	public boolean done() {
-		// TODO Auto-generated method stub
-		return false;
+		if(fin==true)
+			myAgent.doDelete();
+		return fin;
 	}
 
 }
+
