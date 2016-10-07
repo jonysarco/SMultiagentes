@@ -2,15 +2,14 @@ package behaviors;
 
 import jade.core.behaviours.Behaviour;
 import jade.lang.acl.ACLMessage;
-import jade.lang.acl.MessageTemplate;
 
-public class BehaviourWaitResponder extends Behaviour {
+public class BehaviourResponderWait extends Behaviour {
 
 	private boolean end;
 	private int state;
 	private static final Integer Key = 1;
 	
-	public BehaviourWaitResponder(){
+	public BehaviourResponderWait(){
 		end = false;
 		state = 1;
 	}

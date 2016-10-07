@@ -1,9 +1,9 @@
 package stateMachines;
 import java.util.Vector;
 
-import behaviors.BehaviourFinalStateInitiator;
-import behaviors.BehaviourProposeInitiator;
-import behaviors.BehaviourWaitInitiator;
+import behaviors.BehaviourInitiatorFinalState;
+import behaviors.BehaviourInitiatorPropose;
+import behaviors.BehaviourInitiatorWait;
 import jade.core.behaviours.DataStore;
 import jade.core.behaviours.FSMBehaviour;
 
@@ -13,13 +13,13 @@ public class InitiatorStateMachine extends FSMBehaviour{
 		DataStore dataStore = new DataStore();
 		
 		//Definicion de estados
-		BehaviourProposeInitiator propose = new BehaviourProposeInitiator(mov);
+		BehaviourInitiatorPropose propose = new BehaviourInitiatorPropose(mov);
 		propose.setDataStore(dataStore);
 		
-		BehaviourWaitInitiator waitResponse = new BehaviourWaitInitiator();
+		BehaviourInitiatorWait waitResponse = new BehaviourInitiatorWait();
 		waitResponse.setDataStore(dataStore);
 
-		BehaviourFinalStateInitiator finalState = new BehaviourFinalStateInitiator();
+		BehaviourInitiatorFinalState finalState = new BehaviourInitiatorFinalState();
 		finalState.setDataStore(dataStore);
 		
 		//Registrar estados

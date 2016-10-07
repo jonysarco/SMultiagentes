@@ -3,7 +3,7 @@ package behaviors;
 import jade.core.behaviours.Behaviour;
 import jade.lang.acl.ACLMessage;
 
-public class BehaviourFinalResponder extends Behaviour {
+public class BehaviourResponderFinal extends Behaviour {
 
 	private boolean end;
 	private static final Integer Key = 1;
@@ -25,6 +25,4 @@ public class BehaviourFinalResponder extends Behaviour {
 			myAgent.doDelete();
 		return end;
 	}
-
-
 }

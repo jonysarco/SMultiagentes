@@ -9,5 +9,4 @@ public class Responder extends Agent {
 		this.addBehaviour(new ResponderStateMachine());
 		System.out.println("El agente Responder "+this.getAID().getName()+" se encuentra activo.");
 	}
-
 }

@@ -6,14 +6,14 @@ import jade.core.behaviours.Behaviour;
 import jade.lang.acl.ACLMessage;
 import jade.util.leap.ArrayList;
 
-public class BehaviourProposeInitiator extends Behaviour {
+public class BehaviourInitiatorPropose extends Behaviour {
 
-	private int countMovies,state;
+	private int countMovies, state;
 	private Vector<String> movies;
 	private boolean end;
 	private static final Integer Key = 1;
 	
-	public BehaviourProposeInitiator(Vector<String> mov) {
+	public BehaviourInitiatorPropose(Vector<String> mov) {
 		// TODO Auto-generated constructor stub
 		countMovies = 0;
 		this.movies = mov;
@@ -28,25 +28,25 @@ public class BehaviourProposeInitiator extends Behaviour {
          id.setLocalName("Responder");
          if ( countMovies < movies.size() )	{  
 		     //Creo el mensaje 
-        	 ACLMessage message = new ACLMessage(ACLMessage.PROPOSE);
-        	 message.setSender(myAgent.getAID());
-        	 message.setLanguage("Español");
-        	 message.addReceiver(id);
-        	 message.setContent(movies.get(countMovies));
-        	 message.setConversationId("AB-1");
-        	 message.setReplyWith("A-001");
+        	 ACLMessage messagePropose = new ACLMessage(ACLMessage.PROPOSE);
+        	 messagePropose.setSender(myAgent.getAID());
+        	 messagePropose.setLanguage("Español");
+        	 messagePropose.addReceiver(id);
+        	 messagePropose.setContent(movies.get(countMovies));
+        	 messagePropose.setConversationId("AB-1");
+        	 messagePropose.setReplyWith("A-001");
         	 countMovies++;
         	 //Envio el mensaje
-        	 myAgent.send(message);
+        	 myAgent.send(messagePropose);
         	 state = 0;
          }
          else	{
-        	 ACLMessage mensajeRechazo = new ACLMessage(ACLMessage.CANCEL);
-        	 mensajeRechazo.setSender(myAgent.getAID());
-        	 mensajeRechazo.setLanguage("Español");
-        	 mensajeRechazo.addReceiver(id);
-        	 mensajeRechazo.setContent("Fallo la conversacion"); 
-        	 getDataStore().put(Key, mensajeRechazo); //Almaceno el mensaje que llego 
+        	 ACLMessage messageReject = new ACLMessage(ACLMessage.CANCEL);
+        	 messageReject.setSender(myAgent.getAID());
+        	 messageReject.setLanguage("Español");
+        	 messageReject.addReceiver(id);
+        	 messageReject.setContent("Fallo la conversacion"); 
+        	 getDataStore().put(Key, messageReject); //Almaceno el mensaje que llego 
         	 state = 1;
          }
          end = true;

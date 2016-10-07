@@ -2,7 +2,6 @@ package agents;
 import java.util.Vector;
 
 import jade.core.Agent;
-import jade.util.leap.ArrayList;
 import stateMachines.InitiatorStateMachine;
 
 public class Initiator extends Agent{
@@ -11,6 +10,7 @@ public class Initiator extends Agent{
 	
 	protected void setup()	{
 		movies = new Vector<>();
+		//Agrego peliculas al vector
 		movies.add("Rambo 1");
 		movies.add("Rambo 2");
 		movies.add("La historia sin fin");

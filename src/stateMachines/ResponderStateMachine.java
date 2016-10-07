@@ -1,8 +1,8 @@
 package stateMachines;
 
-import behaviors.BehaviourConfirmResponder;
-import behaviors.BehaviourFinalResponder;
-import behaviors.BehaviourWaitResponder;
+import behaviors.BehaviourResponderConfirm;
+import behaviors.BehaviourResponderFinal;
+import behaviors.BehaviourResponderWait;
 import jade.core.behaviours.DataStore;
 import jade.core.behaviours.FSMBehaviour;
 
@@ -14,13 +14,13 @@ public class ResponderStateMachine extends FSMBehaviour {
 	public ResponderStateMachine() {
 		super();
 		
-	    BehaviourWaitResponder waitResponder = new BehaviourWaitResponder();
+	    BehaviourResponderWait waitResponder = new BehaviourResponderWait();
 		waitResponder.setDataStore(dataStateResponder);
 			
-		BehaviourConfirmResponder confirmResponder = new BehaviourConfirmResponder();
+		BehaviourResponderConfirm confirmResponder = new BehaviourResponderConfirm();
 		confirmResponder.setDataStore(dataStateResponder);
 		
-		BehaviourFinalResponder finalResponder = new BehaviourFinalResponder();
+		BehaviourResponderFinal finalResponder = new BehaviourResponderFinal();
 		finalResponder.setDataStore(dataStateResponder);
 		
 		//Registrar Estados

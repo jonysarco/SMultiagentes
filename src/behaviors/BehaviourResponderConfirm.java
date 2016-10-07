@@ -3,17 +3,17 @@ package behaviors;
 import jade.core.behaviours.Behaviour;
 import jade.lang.acl.ACLMessage;
 
-public class BehaviourConfirmResponder extends Behaviour {
+public class BehaviourResponderConfirm extends Behaviour {
 
-	private boolean fin;
+	private boolean end;
 	private int state;
 	private static final Integer Key = 1;
 	public static final Float accept = 0.5f;
 	
-	public BehaviourConfirmResponder(){
+	public BehaviourResponderConfirm(){
 		super();
 		state = 0;
-		fin = false;
+		end = false;
 	} 
 	
 	//Seteo los parametros que va a contener el mensaje
@@ -35,7 +35,7 @@ public class BehaviourConfirmResponder extends Behaviour {
 			ACLMessage acceptMessage = new ACLMessage(ACLMessage.ACCEPT_PROPOSAL);
 			setMessage(acceptMessage, answer);
 			state = 1;
-			fin = true;
+			end = true;
 		}
 		else	
 		{
@@ -49,11 +49,11 @@ public class BehaviourConfirmResponder extends Behaviour {
 	@Override
 	public boolean done() {
 		// TODO Auto-generated method stub
-		return fin;
+		return end;
 	}
+	
 	public int onEnd() {
 		// TODO Auto-generated method stub
 		return state ;
 		}
-
 }

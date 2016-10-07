@@ -2,21 +2,20 @@ package behaviors;
 import jade.core.behaviours.Behaviour;
 import jade.lang.acl.ACLMessage;
 
-public class BehaviourFinalStateInitiator extends Behaviour{
-
+public class BehaviourInitiatorFinalState extends Behaviour{
 	
 	private static final Integer Key = 1;
 	private boolean end;
 	
-	public BehaviourFinalStateInitiator() {
+	public BehaviourInitiatorFinalState() {
 		super();
 		this.end = false;
 	}
 
 	@Override
 	public void action() {
-		 ACLMessage respuesta = (ACLMessage) getDataStore().get(Key);
-		 if (respuesta.getPerformative() == ACLMessage.ACCEPT_PROPOSAL )
+		 ACLMessage answer = (ACLMessage) getDataStore().get(Key);
+		 if (answer.getPerformative() == ACLMessage.ACCEPT_PROPOSAL )
 			 System.out.println("La propuesta del agente: " + myAgent.getLocalName() + " fue aceptada");
 		 else
 			 System.out.println("La propuesta del agente: " + myAgent.getLocalName() + " fue rechazada");
